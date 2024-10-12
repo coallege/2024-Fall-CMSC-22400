@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CMSC 22400/32400: Programming Proofs (Winter 2022)</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+
+    <h1>CMSC 22400/32400: Programming Proofs (Winter 2022)</h1>
+
+    <h3>Overview</h3>
+
+    <p><span>This course will focus on Programming Proofs, in two senses. In the first sense, we will learn how to write a mathematical proof inside a&nbsp;<i>proof assistant</i>, a tool for writing proofs that are mechanically checked by a computer. These proofs resemble, and fundamentally&nbsp;<i>are</i>, programs, hence we will be programming our proofs. In the second sense, we will learn how to write proofs&nbsp;<i>about&nbsp;</i>programs, from proving that they avoid a certain class of errors to precisely characterizing their behavior. Our tool of choice will be the&nbsp;<a href="https://coq.inria.fr/" target="_blank" rel="noopener">Coq proof assistant</a>, though the lessons in this course will easily carry over to other proof assistants like Isabelle, Agda, and Lean.</span></p>
+
+    <h3>Office Hours</h3>
+    <p>Professor Rand: F 2:00-3:30, JCL 313.</p>
+    <p>Benjamin Caldwell (TA): MW 1:30-3:00, JCL 205.</p>
+
+    <h3>Resources</h3>
+    <p>Before coming to class, students should install the following software:</p>
+    <ul>
+        <li>
+            <p>The <a href="https://coq.inria.fr/" target="_blank" rel="noopener">Coq</a> proof assistant</p>
+        </li>
+        <li>
+            <p>An IDE: <a href="https://proofgeneral.github.io/">Proof General</a>&nbsp;(emacs) or <a href="https://github.com/coq-community/vscoq" target="_blank" rel="noopener">VsCoq</a> (visual studio code), depending on your preference. If you use Proof General, I recommend adding <a href="https://github.com/cpitclaudel/company-coq">Company-Coq</a>. The CoqIDE that comes with Coq will also work but it has historically been clunkier.</p>
+        </li>
+        <li>This <a href="https://rand.cs.uchicago.edu/tactics_reference.html" target="_blank" rel="noopener">tactics reference</a> might be helpful.</li>
+    </ul>
+    <h3><span>Structure</span></h3>
+    <p>This class will follow a modified version of volume one of&nbsp;<a href="https://softwarefoundations.cis.upenn.edu/" target="_blank" rel="noopener" target="_blank" rel="noopener" >Logical Foundations</a> along with a bit of volume two, <a href="https://softwarefoundations.cis.upenn.edu/plf-current/toc.html" target="_blank" rel="noopener">Programming Languages Foundations</a>. We will cover mathematical logic in Coq, data structures and proofs about such structures, programming languages and type systems, and proof automation. We will also spend time on the&nbsp;<em>Curry-Howard (or Programs as Proofs) Isomorphism</em>, which underlies the Coq proof assistant.&nbsp;Most classes will consist of <i>live coding</i> which in context will often mean <i>live proof</i>. Materials will be provided both before and after class, so students can follow along in class and review afterward. (The review material will also contain exercises.) This format should translate easily to an online learning environment for the first two weeks of class.</p>
+
+    <h3>Topics</h3>
+    <p>We will cover the first three topics below and 1-3 of the remaining topics, time permitting.&nbsp;</p>
+    <dl>
+        <dt>Proofs as Programs</dt>
+        <dd>Basic Coq, Propositional and Predicate Logic, Dependent Types, Induction as Recursion</dd>
+        <dt>Data Structures</dt>
+        <dd>Proofs about Numbers, Lists, Trees, Maps, and other standard structures</dd>
+        <dt>Reasoning About Programs</dt>
+        <dd>Embedded Programs, Program Semantics, Evaluation, and Equivalence</dd>
+        <dt>Automation</dt>
+        <dd>Lightweight and heavyweight&nbsp;approaches to automation proofs</dd>
+        <dt>Type Theory</dt>
+        <dd>The simply-typed lambda calculus, type soundness</dd>
+        <dt>Hoare Logic</dt>
+        <dd>Logics for proving program correctness</dd>
+    </dl>
+
+    <h3>Grading</h3>
+    <p>Half of a student's grade will come from homework drawn from the Software Foundations books as we cover it. Exercises labeled <strong>advanced</strong> will only be required of students enrolled in the graduate section.&nbsp;The remainder of the grade will come from a midterm (25%) and a final project (25%).</p>
+
+    <h3>Schedule</h3>
+    <table style="border-collapse: collapse; width: 100%; height: 660px;" border="1">
+        <tbody>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Date</td>
+                <td style="width: 24.5011%; height: 29px;">Topic</td>
+                <td style="width: 17.8617%; height: 29px;">Class Material</td>
+                <td style="width: 19.0003%; height: 29px;">After Class</td>
+                <td style="width: 27.2279%; height: 29px;">Notes</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Jan 11</td>
+                <td style="width: 24.5011%; height: 29px;"><a href="https://uchicago.zoom.us/rec/share/lOOyTc7-KXnQV2Ply-HDVc3aBq0sKuHGY0tCuF94_Y5Ts5YJUTDyljFsKoned4vI.mMj9fR-SzjjRihxR" target="_blank" rel="noopener">Introduction to the Coq Proof Assistant</a></td>
+                <td style="width: 17.8617%; height: 29px;"><a id="6716836" href="coq/short/Basics.v" target="_blank" rel="noopener">Basics.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="6722741" href="coq/full/Basics.v" target="_blank" rel="noopener">Basics.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Jan 18.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 27px;">Jan 13</td>
+                <td style="width: 24.5011%; height: 27px;"><a href="https://uchicago.zoom.us/rec/share/M_dbtZiQPfClmHJh7l-VlzedhkyRmuThMLic96FG2cxvDK61KPMzYS-p6GGRvh4W.-ed4UOhPrK1xF91E" target="_blank" rel="noopener">Induction</a></td>
+                <td style="width: 17.8617%; height: 27px;"><a id="6716835" href="coq/short/Induction.v" target="_blank" rel="noopener">Induction.v</a></td>
+                <td style="width: 19.0003%; height: 27px;"><a id="6736192" href="coq/full/Induction.v" target="_blank" rel="noopener">Induction.v</a></td>
+                <td style="width: 27.2279%; height: 27px;">Due Jan 20.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Jan 18</td>
+                <td style="width: 24.5011%; height: 29px;"><a href="https://uchicago.zoom.us/rec/share/guZiSPEO1r4jL0R0gMIJzwj1PXhfSoT1DWNQuzpNdlYNNhQychARyIma7pLAw4zW.-SdMY1OKPt_lWy1R" target="_blank" rel="noopener">Data Structures</a></td>
+                <td style="width: 17.8617%; height: 29px;"><a id="6757497" href="coq/short/Lists.v" target="_blank" rel="noopener">Lists.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="6770034" href="coq/full/Lists.v" target="_blank" rel="noopener">Lists.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Jan 25.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Jan 20</td>
+                <td style="width: 24.5011%; height: 29px;"><a href="https://uchicago.zoom.us/rec/share/0fxcGNxErS-tfS_Dm40haRm97i6SZ9OUYnHgDegaXUhpRisyCFZC6GPxIalJwfi0.zkznX-nO7za8-uzF" target="_blank" rel="noopener">Polymorphism</a></td>
+                <td style="width: 17.8617%; height: 29px;"><a id="6773568" href="coq/short/Poly.v" target="_blank" rel="noopener">Poly.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="6774663" href="coq/full/Poly.v" target="_blank" rel="noopener">Poly.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Jan 27.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Jan 25</td>
+                <td style="width: 24.5011%; height: 29px;"><a href="https://uchicago.zoom.us/rec/share/gqo09HIrPf-TKeLKATB3XJGeQqyeMpYnkV-MAlPwbotB0Ng4yQqOLWfToDzz5q6G.vDGmTw-G6KjRmebt" target="_blank" rel="noopener">Tactics</a></td>
+                <td style="width: 17.8617%; height: 29px;"><a id="6809961" href="coq/short/Tactics.v" target="_blank" rel="noopener">Tactics.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="6809949" href="coq/full/Tactics.v" target="_blank" rel="noopener">Tactics.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Feb 1.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Jan 27</td>
+                <td style="width: 24.5011%; height: 29px;"><a href="https://uchicago.zoom.us/rec/share/J5tQYjCTFVqFslTVZaUDl-0wYGaTUUn_VJRktZWLu8Z1GF1pecOtBU1nhFobrF3n.yxeExQVqzTNxKgVq" target="_blank" rel="noopener">Logic</a></td>
+                <td style="width: 17.8617%; height: 29px;"><a href="coq/short/Logic.v" target="_blank" rel="noopener">Logic.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a href="coq/full/Logic.v" target="_blank" rel="noopener">Logic.v</a></td>
+                <td style="width: 27.2279%; height: 29px;"><strong>Due Feb 8 (extended).</strong></td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Feb 01</td>
+                <td style="width: 24.5011%; height: 29px;"><a href="https://uchicago.zoom.us/rec/share/ZoGZp6iYz-UItKjwY4n-QYxYMYZNCMvbS2ru_HZAglpsOrP6nFpNYpkiXbPgeaJF.E_eSlakgnEMv6bAo" target="_blank" rel="noopener">Inductive Propositions</a></td>
+                <td style="width: 17.8617%; height: 29px;"><a id="6863376" href="coq/short/IndProp.v" target="_blank" rel="noopener">IndProp.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="6864831" href="coq/full/IndProp.v" target="_blank" rel="noopener">IndProp.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Feb 8.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Feb 03</td>
+                <td style="width: 24.5011%; height: 29px;"><a href="https://uchicago.zoom.us/rec/share/2youjU_paMxPsgOiAycZPIsi6ppvhOOaHPlZHWgoDhFFrTnTUSmarjdfBq-v3vcl.RYuLpOn-PDk-PmGc" target="_blank" rel="noopener">Proofs and Programs</a></td>
+                <td style="width: 17.8617%; height: 29px;"><a title="ProofObjects.v" href="coq/short/ProofObjects.v" target="_blank" rel="noopener" data-canvas-previewable="false">ProofObjects.v</a>&nbsp;</td>
+                <td style="width: 19.0003%; height: 29px;"><a id="6882616" href="coq/full/ProofObjects.v" target="_blank" rel="noopener">ProofObjects.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Feb 10.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Feb 08</td>
+                <td style="width: 24.5011%; height: 29px;"><a href="https://uchicago.zoom.us/rec/share/AsVjI3JhUerZz3EhtVODRTXiuZa91aPyk9sHtSgezCMjgYIpR91rhxFaXHvLbaJF.vwmJH8V5VJA0LffP" target="_blank" rel="noopener">Induction Principles</a></td>
+                <td style="width: 17.8617%; height: 29px;"><a id="6916993" href="coq/short/IndPrinciples.v" target="_blank" rel="noopener">IndPrinciples.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="6917001" href="coq/full/IndPrinciples.v" target="_blank" rel="noopener">IndPrinciples.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Feb 15.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Feb 10</td>
+                <td style="width: 24.5011%; height: 29px;"><a href="https://uchicago.zoom.us/rec/share/oyLyaTWV0AZAslIk74D33E0A9Wf3o3M_m3VRfs0CA204d61AuzcE6yNfJsqsnm3w.iIyu48Wdadm_ZZef" target="_blank" rel="noopener">Maps</a></td>
+                <td style="width: 17.8617%; height: 29px;"><a id="6932242" href="coq/short/Maps.v" target="_blank" rel="noopener">Maps.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="6935492" href="coq/full/Maps.v" target="_blank" rel="noopener">Maps.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Feb 17.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;"><strong>Feb 15</strong></td>
+                <td style="width: 24.5011%; height: 29px;"><em><strong>Midterm</strong></em></td>
+                <td style="width: 17.8617%; height: 29px;"><a title="midterm_2022_grad-1.v" href="coq/midterm_2022.v" target="_blank" rel="noopener" data-canvas-previewable="false">midterm_2022.v</a>&nbsp;</td>
+                <td style="width: 19.0003%; height: 29px;"><a title="midterm_2022_sol.v" href="coq/midterm_2022_sol.v" target="_blank" rel="noopener" data-canvas-previewable="false">midterm_2022_sol.v</a>&nbsp;</td>
+                <td style="width: 27.2279%; height: 29px;"></td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Feb 17</td>
+                <td style="width: 24.5011%; height: 29px;">The Imp Language</td>
+                <td style="width: 17.8617%; height: 29px;"><a id="6988820" href="coq/short/Imp.v" target="_blank" rel="noopener">Imp.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="6991575" href="coq/full/Imp.v" target="_blank" rel="noopener">Imp.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Feb 24.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;"><strong>Extra</strong></td>
+                <td style="width: 24.5011%; height: 29px;">Automation</td>
+                <td style="width: 17.8617%; height: 29px;"></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="7023942" href="coq/full/Auto.v" target="_blank" rel="noopener">Auto.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Some automation for those interested. (No homework.)</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Feb 22</td>
+                <td style="width: 24.5011%; height: 29px;">Program Equivalence</td>
+                <td style="width: 17.8617%; height: 29px;"><a id="7023943" href="coq/short/Equiv.v" target="_blank" rel="noopener">Equiv.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="7037884" href="coq/full/Equiv.v" target="_blank" rel="noopener">Equiv.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Mar 3.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Feb 24</td>
+                <td style="width: 24.5011%; height: 29px;">Hoare Logic</td>
+                <td style="width: 17.8617%; height: 29px;"><a id="7048714" href="coq/short/Hoare.v" target="_blank" rel="noopener">Hoare.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="7073657" href="coq/full/Hoare.v" target="_blank" rel="noopener">Hoare.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Mar 8.</td>
+            </tr>
+            <tr style="height: 53px;">
+                <td style="width: 11.409%; height: 53px;"><strong>Mar 01</strong></td>
+                <td style="width: 24.5011%; height: 53px;"><em><strong>Project Proposal Due</strong></em></td>
+                <td style="width: 17.8617%; height: 53px;"></td>
+                <td style="width: 19.0003%; height: 53px;"></td>
+                <td style="width: 27.2279%; height: 53px;"></td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Mar 01</td>
+                <td style="width: 24.5011%; height: 29px;">More Hoare Logic</td>
+                <td style="width: 17.8617%; height: 29px;"><a id="7083269" href="coq/short/Hoare2.v" target="_blank" rel="noopener">Hoare2.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="7084130" href="coq/full/Hoare2.v" target="_blank" rel="noopener">Hoare2.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Mar 8.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Mar 03</td>
+                <td style="width: 24.5011%; height: 29px;">Small Step Semantics</td>
+                <td style="width: 17.8617%; height: 29px;"><a id="7101713" href="coq/short/Smallstep.v" target="_blank" rel="noopener">Smallstep.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="7103971" href="coq/full/Smallstep.v" target="_blank" rel="noopener">Smallstep.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Mar 10.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Mar 08</td>
+                <td style="width: 24.5011%; height: 29px;">Types</td>
+                <td style="width: 17.8617%; height: 29px;"><a id="7145894" href="coq/short/Types.v" target="_blank" rel="noopener">Types.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="7146848" href="coq/full/Types.v" target="_blank" rel="noopener">Types.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">Due Mar 15.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;">Mar 10</td>
+                <td style="width: 24.5011%; height: 29px;">Typed Lambda Calculus</td>
+                <td style="width: 17.8617%; height: 29px;"><a id="7165009" href="coq/short/Stlc.v" target="_blank" rel="noopener">Stlc.v</a></td>
+                <td style="width: 19.0003%; height: 29px;"><a id="7167460" href="coq/full/Stlc.v" target="_blank" rel="noopener">Stlc.v</a></td>
+                <td style="width: 27.2279%; height: 29px;">No homework.</td>
+            </tr>
+            <tr style="height: 29px;">
+                <td style="width: 11.409%; height: 29px;"><strong>Mar 15</strong></td>
+                <td style="width: 24.5011%; height: 29px;"><em><strong>Final Projects Due</strong></em></td>
+                <td style="width: 17.8617%; height: 29px;"></td>
+                <td style="width: 19.0003%; height: 29px;"></td>
+                <td style="width: 27.2279%; height: 29px;"><strong>Good luck!</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
