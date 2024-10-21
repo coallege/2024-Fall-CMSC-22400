@@ -1,0 +1,9 @@
+{
+   "files.exclude": {
+      "**/*.aux": true,
+      "**/*.vok": true,
+      "**/*.vos": true,
+      "**/*.glob": true,
+      "**/.Makefile.d": true,
+   }
+}
