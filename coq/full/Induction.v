@@ -220,12 +220,31 @@ Qed.
 Theorem add_comm : forall n m : nat,
   n + m = m + n.
 Proof.
-  (* FILL IN HERE *) Admitted.
+  intros n m.
+  induction n as [| n' IPrev ].
+  - rewrite plus_O_n.
+    rewrite add_0_r.
+    reflexivity.
+  - simpl.
+    rewrite IPrev.
+    rewrite plus_n_Sm.
+    reflexivity.
+Qed.
 
 Theorem add_assoc : forall n m p : nat,
   n + (m + p) = (n + m) + p.
 Proof.
-  (* FILL IN HERE *) Admitted.
+  intros n m p.
+  induction n as [| n' IPrev ].
+  - rewrite plus_O_n.
+    reflexivity.
+  - rewrite add_comm.
+    rewrite <- plus_n_Sm.
+    rewrite add_comm.
+    rewrite IPrev.
+    reflexivity.
+  Qed.
+
 (** [] *)
 
 (** **** Exercise: 2 stars, standard (double_plus)
@@ -239,10 +258,17 @@ Fixpoint double (n:nat) :=
   end.
 
 (** Use induction to prove this simple fact about [double]: *)
-
+(* doubleplusgood *)
 Lemma double_plus : forall n, double n = n + n .
 Proof.
-  (* FILL IN HERE *) Admitted.
+  intros n.
+  induction n as [| n' IPrev ].
+  - reflexivity.
+  - simpl.
+    rewrite IPrev.
+    rewrite plus_n_Sm.
+    reflexivity.
+Qed.
 (** [] *)
 
 (** **** Exercise: 2 stars, standard, optional (even_S)
@@ -257,6 +283,7 @@ Proof.
 Theorem even_S : forall n : nat,
   even (S n) = negb (even n).
 Proof.
+  
   (* FILL IN HERE *) Admitted.
 (** [] *)
 

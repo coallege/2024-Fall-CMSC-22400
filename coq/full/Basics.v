@@ -1354,7 +1354,10 @@ Qed.
 Theorem zero_nbeq_plus_1 : forall n : nat,
   0 =? (n + 1) = false.
 Proof.
-  (* FILL IN HERE *) Admitted.
+  intros [|n].
+  - reflexivity.
+  - reflexivity.
+Qed.
 (** [] *)
 
 (* ================================================================= *)
@@ -1455,8 +1458,13 @@ Theorem identity_fn_applied_twice :
   (forall (x : bool), f x = x) ->
   forall (b : bool), f (f b) = b.
 Proof.
-  (* FILL IN HERE *) Admitted.
-
+  intros f.
+  intros f_defn.
+  intros b.
+  rewrite f_defn.
+  rewrite f_defn.
+  reflexivity.
+Qed.
 (** [] *)
 
 (** **** Exercise: 1 star, standard (negation_fn_applied_twice)
@@ -1485,8 +1493,8 @@ Theorem andb_eq_orb :
   (andb b c = orb b c) ->
   b = c.
 Proof.
-  (* FILL IN HERE *) Admitted.
-
+  intros b c.
+  Admitted.
 (** [] *)
 
 (** **** Exercise: 3 stars, advanced (binary)
